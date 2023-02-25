@@ -127,7 +127,7 @@ It also has the following optional parameters:
 
 - **catMinPrev:** the minimum prevalence a category needs before it gets its own bar (note how in the Flavour graph, "raspberry" and "coffee" get lumped into "OTHER" instead of getting their own bars, because they aren't a large enough fraction of the dataset). 1% by default.
 - **contTargetPts:** the number of points (joints, hinges) each continuous graph will aim to have (sometimes it will be lower than this when the generated points coincide). 5 by default; increase if you want to model continuous features in more detail, and decrease if you want to avoid overfit.
-- **edge:** the extent to which each continuous graph rounds off its extreme values. (note how the lowest point in the Width graph is 4 even though the lowest value is 3, because less than 1/100 of the data is below 4). 1% by default.
+- **contEdge:** the extent to which each continuous graph rounds off its extreme values. (note how the lowest point in the Width graph is 4 even though the lowest value is 3, because less than 1/100 of the data is below 4). 1% by default.
 
 ## train_gamma_model()
 train_gamma_model() has the following required parameters:
@@ -143,7 +143,7 @@ It also has the following optional parameters:
 - **pen:** the level of LASSO penalization applied during training. Useful for featureselection and accounting for overfit. 0 by default.
 - **weightCol:** the column which specifies how the rows should be weighted while training (if a row has a weight of 100, that's the same as if the dataset had 100 copies of that row, each with weight 1). *None* by default; in other words, when this isn't specified, all rows have an equal weight of 1.
 - **staticFeats:** a list of explanatory features you whose graphs you want *not* to be trained while modelling. If you wanted to preserve how your model treats Height and Width, you could set staticFeats=["Height", "Width"] and all the other feature effects would be trained while holding those two static. Useful for if a stakeholder has already signed off on part of a model and you want to make limited changes without needing them to re-certify the whole thing. An empty list, by default.
-- **prints:** a variable specifying how 'loud' the training process should be. It takes three values: "silent" (output nothing to terminal while training), "normal" (output basic progress metrics while training), and "verbose" (output everything which could concievably be useful while training). Useful for if you want a clean terminal, or if you want a better idea of how the model changes over the course of a run (especially for bughunting). "normal" by default.
+- **prints:** a variable specifying how 'loud' the training process should be. It takes three values: "silent" (output nothing to terminal while training), "normal" (output basic progress metrics while training), and "verbose" (output everything which could concievably be useful while training). Useful for if you want a clean terminal, or if you want a better idea of how the model changes over the course of a run (especially for bughunting). "silent" by default.
 
 ## viz_multiplicative_model()
 viz_multiplicative_model() has one required parameter:
