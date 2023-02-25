@@ -85,9 +85,9 @@ print(model)
 you'll see it's changed. You'll also see that this isn't the most enlightening way to view a trained model, which makes this a good opportunity to introduce Durkon's use of plotly visualizations:
 
 ```python
-du.wraps.viz_multiplicative_model(model)
+du.wraps.viz_multiplicative_model(model,"exampleSubFolder")
 ```
-Running the above code should produce a folder of output graphs which look like this.
+Running the above code should produce a folder of PDP (Partial Dependency Plot) graphs which look like this.
 
 Note that these graphs do not describe the model post-hoc, like with AvE plots. They (together with the BASE_VALUE) *are* the model. Whenever the model makes a prediction, it starts with the BASE_VALUE, looks up the multiplier for each feature, and applies that multiplier.
 
@@ -180,7 +180,7 @@ When predicting, additive models add to the BASE_VALUE instead of multiplying it
 
 Note that an additive model has a "featcomb" parameter specifying that it combines feature effects additively and not multiplicatively. Note also that an untrained additive model will have feature effects of 0 ("add 0 to everything!") instead of 1 ("multiply everything by 1!").
 
-To fit a Normally-distributed additive model, follow the instructions in the above section. The only things you need to change are the model prep function (prep_additive_model() instead of prep_model()), the model training function (train_additive_model() instead of train_gamma_model()), and the learning rate (different error functions treat learning differently).
+To fit a Normally-distributed additive model, follow the instructions in the above section. The only things you need to change are the model prep function (prep_additive_model() instead of prep_model()), the model training function (train_normal_model() instead of train_gamma_model()), and the learning rate (different error functions treat learning differently).
 
 To visualize a Normally-distributed additive model, you should use viz_additive_model() instead of viz_multiplicative_model().
 
@@ -227,7 +227,7 @@ Models can be exported in WTW-style csv format, which can be opened and examined
 
 To export a model, use
 ```python
-du.export.model_to_lines(model)
+du.export.export_model(model)
 ```
 model_to_lines has the following optional parameters:
 
