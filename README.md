@@ -44,7 +44,7 @@ print(trainDf)
 [12345 rows x 7 columns]
 ```
 
-Examining the dataset, you can see at a glance that Width, Height and Icing Thickness are continuous variables, while Flavour, Wedding and Fancy are continuous. Add the column names to the appropriate lists.
+Examining the dataset, you can see at a glance that Width, Height and Icing Thickness are continuous variables, while Flavour, Wedding and Fancy are categorical. Add the column names to the appropriate lists.
 
 ```python
 cats=["Flavour","Wedding","Fancy"]
@@ -99,7 +99,9 @@ Similarly, the multiplier for Flavour would be ~1.07, since that's the y-coordin
 
 ![enter image description here](https://h-b-p.github.io/Durkon-demo-II/graphs/Flavour.png)
 
-Durkon would therefore make a prediction for this row by starting with the BASE_VALUE of ~30.06, multiplying by ~0.38 for Width, multplying by ~1.07 for Flavour, and multiplying by four other factors for the four other explanatory variables.
+Durkon would therefore make a prediction for this row by starting with the BASE_VALUE of ~30.06, multiplying by ~0.38 for Width, multplying by ~1.07 for Flavour, and multiplying by four other factors for the four other explanatory variables. In other words,
+
+$$ [Prediction] = [Base Value] * [Multiplier from Width] * [Multiplier from Height] * [Multiplier from Icing Thickness] * [Multiplier from Flavour] * [Multiplier from Wedding] * [Multiplier from Fancy]
 
 You can use your model to predict new data as shown below:
 
@@ -191,7 +193,7 @@ When predicting, logistic models behave like additive models, but apply {the log
 To get data in the right format, create a response column where entries take a value of 1 if they show the behavior you're trying to predict, and 0 otherwise. For example, if you were trying to use other features to predict whether a cake would be marzipan-flavoured, you could construct a valid response variable "MARZIPAN" as shown below:
 
 ```python
-trainDf["MARZIPAN"] = trainDf[(trainDf["Flavour"]=="marzipan").apply(int)
+trainDf["MARZIPAN"] = (trainDf["Flavour"]=="marzipan").apply(int)
 ```
 
 To fit a Logistic model, follow the instructions in the above section. The only things you need to change are the prep function (prep_logistic_model() instead of prep_model()), the model training function (train_logistic_model() instead of train_gamma_model()), and the learning rate (different error functions treat learning differently).
