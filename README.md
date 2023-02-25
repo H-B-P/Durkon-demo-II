@@ -101,7 +101,7 @@ Similarly, the multiplier for Flavour would be ~1.07, since that's the y-coordin
 
 Durkon would therefore make a prediction for this row by starting with the BASE_VALUE of ~30.06, multiplying by ~0.38 for Width, multplying by ~1.07 for Flavour, and multiplying by four other factors for the four other explanatory variables. In other words,
 
-$$[Prediction] = [Base Value] * [Multiplier from Width] * [Multiplier from Height] * [Multiplier from Icing Thickness] * [Multiplier from Flavour] * [Multiplier from Wedding] * [Multiplier from Fancy]
+$$ [Prediction] = [Base Value] * [Multiplier from Width] * [Multiplier from Height] * [Multiplier from Icing Thickness] * [Multiplier from Flavour] * [Multiplier from Wedding] * [Multiplier from Fancy] $$
 
 You can use your model to predict new data as shown below:
 
