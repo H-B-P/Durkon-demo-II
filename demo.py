@@ -29,4 +29,4 @@ du.wraps.viz_multiplicative_model(model)
 
 #Predict with model
 
-preds = du.misc.predict(testDf)
+preds = du.misc.predict(testDf, model)

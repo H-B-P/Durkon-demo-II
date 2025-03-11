@@ -223,13 +223,13 @@ model = du.misc.load_model("MODEL_FILENAME_HERE")
 ```
 # Exporting models
 
-Models can be exported in WTW-style csv format, which can be opened and examined like any other spreadsheet.
+Models can be exported as RADAR code, which can be copy pasted into a formula and run as part of a RADAR pipeline.
 
 To export a model, use
 ```python
-du.export.export_model(model)
+du.radify.radify_model(model)
 ```
-model_to_lines has the following optional parameters:
+radify_model has the following optional parameters:
 
-- **detail:** the number of interpolated points placed between the points that define the model. 1 by default.
-- **filename:** the name of the file the function will output. "op.csv" by default.
+- **logistic:** whether the model applies a logit function as its final step (i.e. whether it's a classification model or not). False by default.
+- **filename:** the name of the file the function will output. "rad_model.txt" by default.
